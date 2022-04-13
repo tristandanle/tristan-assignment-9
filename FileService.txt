@@ -1,0 +1,59 @@
+package com.coderscampus.assignment9.service;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+import org.springframework.stereotype.Service;
+
+import com.coderscampus.assignment9.domain.Recipe;
+
+//@Service
+public class FileService {
+
+	private String fileName;
+	
+	public String getFileName() {
+		return fileName;
+	}
+
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+
+	public FileService() {
+    }
+
+	
+	public FileService(String fileName) {
+			this.fileName = fileName;
+	}
+
+	public List<String> readFile (String filename) throws IOException {
+		return Files.readAllLines(Paths.get(filename));
+	}
+	
+	public Iterable<CSVRecord> readFiles (String filename) throws IOException {
+		   Reader in = new FileReader(filename);
+		   Iterable<CSVRecord> records = CSVFormat.DEFAULT
+							   .withIgnoreSurroundingSpaces()
+							   .withHeader()
+							   .withDelimiter(',')
+							   .parse(in);
+		
+
+		return records;
+	}
+	
+	
+	
+	
+}

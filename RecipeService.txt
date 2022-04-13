@@ -1,0 +1,52 @@
+package com.coderscampus.assignment9.service;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.coderscampus.assignment9.domain.Recipe;
+
+@Service
+public class RecipeService {
+
+	public List<Recipe> getRecipes() throws IOException {
+//		String[] HEADERS = { "Cooking Minutes", "Dairy Free", "Gluten Free", "Instructions", "Preparation Minutes",
+//				"Price Per Serving", "Ready In Minutes", "Servings", "Spoonacular Score", "Title", "Vegan",
+//				"Vegetarian" };
+		try {
+			Reader in = new FileReader("recipe.text");
+			Iterable<CSVRecord> records = CSVFormat.DEFAULT.withDelimiter(',')
+					// .withHeader(HEADERS)
+					.withFirstRecordAsHeader()
+					.withIgnoreSurroundingSpaces()
+					.parse(in);
+			for (CSVRecord record : records) {                
+				Integer cookingMinutes = Integer.parseInt(record.get(0)); // record.get("Cooking Minutes") 
+				Boolean dairyFree = Boolean.parseBoolean(record.get(1)); // Dairy Free
+				Boolean glutenFree = Boolean.parseBoolean(record.get(2)); // Gluten Free
+				String instructions = record.get(3); // Instructions
+				Double preparationMinutes = Double.parseDouble(record.get(4)); // Preparation Minutes
+				Double pricePerServing = Double.parseDouble(record.get(5));// Price Per Serving
+				Integer readyInMinutes = Integer.parseInt(record.get(6));// Ready In Minutes
+				Integer servings = Integer.parseInt(record.get(7));// Servings
+				Double spoonacularScore = Double.parseDouble(record.get(8)); // Spoonacular Score
+				String title = record.get(9); // Title
+				Boolean vegan = Boolean.parseBoolean(record.get(10));// Vegan
+				Boolean vegetarian = Boolean.parseBoolean(record.get(11)); // Vegetarian
+				Recipe recipe = new Recipe();
+
+			}
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		return null;
+
+	}
+
+}
