@@ -4,8 +4,8 @@ Ingest a recipe.txt file and store this information in a Java Collection (ArrayL
 Use the Apache Commons CSV project to parse the text file.
 
 
-POJO file:
-**********
+# POJO :
+********
 public class Recipe {
 
      private Integer cookingMinutes;
@@ -35,7 +35,7 @@ public class Recipe {
 }
 
 
-“endpoints” is inside of a RestController that will filter this data:
+# “endpoints” is inside of a RestController that will filter this data:
 ********************************************************************
 
 @GetMapping("/gluten-free")
@@ -49,7 +49,7 @@ public class Recipe {
 @GetMapping("/all-recipes")
 
 
-Instructions:
+# Instructions:
 *************
 - visit the website: start.spring.io
 - Download a fresh new Spring Boot project
