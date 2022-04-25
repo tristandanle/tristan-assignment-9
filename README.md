@@ -49,8 +49,3 @@ public class Recipe {
 @GetMapping("/all-recipes")
 
 
-# Instructions:
-*************
-- visit the website: start.spring.io
-- Download a fresh new Spring Boot project
-- Import it into IDE ( Eclipse (
