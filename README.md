@@ -1,41 +1,12 @@
 # tristan-assignment-9
- Spring Framework of Week 13
-Ingest a recipe.txt file and store this information in a Java Collection (ArrayList).
-Use the Apache Commons CSV project to parse the text file.
+Topic: Spring Framework of Week 13
+- Use the Apache Commons CSV project to parse the text file (recipe.txt)
+- Ingest this file and store this information in a Java Collection (ArrayList).
+- filter data of the file according to the different "endpoints"  
+- Display information required of the each "endpoint"  on the webpage  
 
 
-# POJO :
-********
-public class Recipe {
-
-     private Integer cookingMinutes;
-
-     private Boolean dairyFree;
-
-     private Boolean glutenFree;
-
-     private String instructions;
-
-     private Double preparationMinutes;
-
-     private Double pricePerServing;
-
-     private Integer readyInMinutes;
-
-     private Integer servings;
-
-     private Double spoonacularScore;
-
-     private String title;
-
-     private Boolean vegan;
-
-     private Boolean vegetarian;
-
-}
-
-
-# “endpoints” is inside of a RestController that will filter this data:
+# “endpoints” that will filter this data:
 ********************************************************************
 
 @GetMapping("/gluten-free")
@@ -47,5 +18,3 @@ public class Recipe {
 @GetMapping("/vegetarian")
 
 @GetMapping("/all-recipes")
-
-
