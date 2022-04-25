@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coderscampus.assignment9.domain.Recipe;
+import com.coderscampus.assignment9.repository.RecipeRepository;
 import com.coderscampus.assignment9.service.FileRecipesService;
 
 @RestController   // Get raw data 
@@ -38,6 +39,8 @@ public class RecipeRestController {
 	public List<Recipe> listVegan() throws IOException {
 		// The “vegan” endpoint will only return a subset of
 		// the full Collection where vegan is true
+		RecipeRepository repo = new RecipeRepository();
+		
 		List<Recipe> subsetVegan = new ArrayList<Recipe>();
 		// Method of for loop
 		for(Recipe r : recipesService.listRecipes()) {
@@ -47,6 +50,7 @@ public class RecipeRestController {
 		}
 		
 		return subsetVegan;
+		
 	}
 	
 	
