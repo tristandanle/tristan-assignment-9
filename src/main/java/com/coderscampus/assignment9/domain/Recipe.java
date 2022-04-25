@@ -15,13 +15,10 @@ public class Recipe {
     private Boolean vegan;
     private Boolean vegetarian;
     
-    
-    
     // INSERT GETTERS & SETTERS HERE
-
 	public Recipe(Integer cookingMinutes, Boolean dairyFree, Boolean glutenFree, String instructions,
-			Double preparationMinutes, Double pricePerServing, Integer readyInMinutes, Integer servings,
-			Double spoonacularScore, String title, Boolean vegan, Boolean vegetarian) {
+		      Double preparationMinutes, Double pricePerServing, Integer readyInMinutes, Integer servings,
+		      Double spoonacularScore, String title, Boolean vegan, Boolean vegetarian) {
 
 		   this.cookingMinutes = cookingMinutes;
 		   this.dairyFree = dairyFree;
@@ -137,7 +134,6 @@ public class Recipe {
 	}
 	
 	// ToString() METHOD HERE
-
 	@Override
 	public String toString() {
 		return "Recipe [cookingMinutes=" + cookingMinutes + ", dairyFree=" + dairyFree + ", glutenFree=" + glutenFree
