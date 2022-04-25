@@ -32,7 +32,7 @@ public class FileRecipesService {
 	public List<Recipe> listRecipes() throws IOException {
 		
 		if (!(repo.getRecipes().isEmpty())) {
-			//return null;
+			//return null; ===>  NullPointerException results when refreshing the browser 
 			return repo.getRecipes();
 		} else {
 			String fileName = "recipes.txt";
