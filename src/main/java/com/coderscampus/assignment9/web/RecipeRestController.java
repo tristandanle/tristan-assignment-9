@@ -16,23 +16,20 @@ import com.coderscampus.assignment9.service.FileRecipesService;
 
 @RestController   // Get raw data 
 public class RecipeRestController {
-// Instruction: Once ingested the recipe.txt file and stored the resulting 
-// POJOs into a Collection,next task is to create “endpoints” 
-// inside of a RestController that will filter this data
+       // Instruction: Once ingested the recipe.txt file and stored the resulting POJOs into a Collection,next task is to create “endpoints” 
+       // inside of a RestController that will filter this data
 
 	@Autowired
 	private FileRecipesService recipesService;
 
 	@GetMapping("/gluten-free")
 	public List<Recipe> listGlutenFree() throws IOException {
-		// The “gluten-free” endpoint will only return a subset of
-		// the full Collection where glutenFree is true
-		// Method of stream()
+		// The “gluten-free” endpoint will only return a subset of the full Collection where glutenFree is true Method of stream()
 	   List<Recipe> subsetGF = recipesService.listRecipes().stream()
-	   .filter(Recipe::getGlutenFree)
-       .collect(Collectors.toList());
-		return subsetGF;
-		}
+	                                         .filter(Recipe::getGlutenFree)
+                                                 .collect(Collectors.toList());
+	   return subsetGF;
+	}
 	
 
 	@GetMapping("/vegan")
@@ -45,19 +42,17 @@ public class RecipeRestController {
 		// Method of for loop
 		for(Recipe r : recipesService.listRecipes()) {
 			if (r.getVegan() == true) {
-				subsetVegan.add(r);
+			   subsetVegan.add(r);
 			}
 		}
 		
 		return subsetVegan;
-		
 	}
 	
 	
 	@GetMapping("/vegan-and-gluten-free")
 	public List<Recipe> listVeganGlutenFree() throws IOException {
-	// The “vegan-and-gluten-free” endpoint will only return a subset 
-	//  of the full Collection where glutenFree is true and vegan is true
+	// The “vegan-and-gluten-free” endpoint will only return a subset of the full Collection where glutenFree is true and vegan is true
 		//Filter 1
 		Predicate<Recipe> isGluten = r -> r.getGlutenFree().equals(true);
 		//Filter 2
@@ -65,8 +60,8 @@ public class RecipeRestController {
 		
 		// Method of Predicate's filter
 		List<Recipe> listVG = recipesService.listRecipes().stream()
-		.filter(isGluten.and(isVegan))
-		.collect(Collectors.toList());
+		                                    .filter(isGluten.and(isVegan))
+	                                            .collect(Collectors.toList());
 		
 		return listVG;
 	}
@@ -74,24 +69,18 @@ public class RecipeRestController {
 
 	@GetMapping("/vegetarian")
 	public List<Recipe> getVegetarian() throws IOException {
-		// The “vegetarian” endpoint will only return a subset of the 
-		// full Collection where vegetarian is true 
+		// The “vegetarian” endpoint will only return a subset of the full Collection where vegetarian is true 
 		Predicate<Recipe> isVegetarian = r -> r.getVegetarian().equals(true);
-		
-	    return recipesService.listRecipes().stream()
-	    .filter(isVegetarian)
-	    .collect(Collectors.toList());
+  	        return recipesService.listRecipes().stream()
+	                                           .filter(isVegetarian)
+	                                           .collect(Collectors.toList());
 		}
 	
 	
 	@GetMapping("/all-recipes")
 	public List<Recipe> getAllRecipes() throws IOException {
-		// The “all-recipes” endpoint will not filter the data at all 
-		// and should return the full Collection.
-		
-		// return recipesService.listRecipes().stream()
-		//		.collect(Collectors.toList());
-		
+		// The “all-recipes” endpoint will not filter the data at all  and should return the full Collection.
+		// return recipesService.listRecipes().stream().collect(Collectors.toList());
 		return recipesService.listRecipes();
 		
 		}
